@@ -84,6 +84,7 @@ namespace Exercise4
                     if (inputLine == colors.ElementAt(i).Key.ToLower() || inputLine == $"{i + 1}")
                     {
                         DisplayColorFacts(colors.ElementAt(i).Value);
+                        colors.Remove(colors.ElementAt(i).Key);
                         correctResponse = true;
                         break;
                     }
