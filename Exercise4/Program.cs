@@ -50,12 +50,15 @@ namespace Exercise4
 
             while (programRunning)
             {
+                //Set variables for new loop actions
                 firstItem = true;
                 correctResponse = false;
                 number = 0;
+                //Display the menu to the user
                 Console.Clear();
                 Console.WriteLine("-COLOR FACTS-\n");
                 Console.Write("What is your favorite color");
+                //As the colors are removed after they are selected, this loop will display only the colors that have not been removed
                 foreach (KeyValuePair<string, Color> kvp in colors)
                 {
                     number++;
@@ -73,12 +76,15 @@ namespace Exercise4
                 Console.Write("Selection: ");
                 inputLine = Console.ReadLine().ToLower();
 
+                //This facilitates the user being able to exit the program, also allowing them to choose the number associated with exit at the time
                 if (inputLine == $"{colors.Count+1}" || inputLine == "exit")
                 {
                     programRunning = false;
                     continue;
                 }
 
+                //This facilitates the user being able to select the color by number or string, and only checks against the remaining colors
+                //A switch statement doesn't allow for dynamic checking like this
                 for (int i = 0; i < colors.Count; i++)
                 {
                     if (inputLine == colors.ElementAt(i).Key.ToLower() || inputLine == $"{i + 1}")
@@ -90,6 +96,7 @@ namespace Exercise4
                     }
                 }
 
+                //If a correct response was not made, tell the user the input was not a recognized value
                 if (!correctResponse)
                 {
                     Console.WriteLine("That is not a recognized input.\nPlease try again.\n");
@@ -101,8 +108,10 @@ namespace Exercise4
 
         public static void DisplayColorFacts(Color input)
         {
+            //Allows the display to change dynamically between facts
             string[] preface = new string[] { "Did you know", "Also", "Finally" };
             
+            //This loop runs through the facts and preface values giving the user a dynamic display of information
             for (int i = 0; i < input.Info.Length; i++)
             {
                 Console.Clear();

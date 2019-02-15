@@ -25,6 +25,7 @@ namespace Exercise4
             set { _info = value; }
         }
 
+        //Constructor for the class
         public Color(string name, string[] info)
         {
             _name = name;
